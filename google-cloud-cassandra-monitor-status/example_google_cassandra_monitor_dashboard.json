@@ -1,0 +1,737 @@
+{
+  "displayName": "Cassandra Health Dashboard",
+  "dashboardFilters": [],
+  "description": "",
+  "labels": {},
+  "mosaicLayout": {
+    "columns": 48,
+    "tiles": [
+      {
+        "height": 8,
+        "width": 48,
+        "widget": {
+          "title": "Count of Connected Nodes",
+          "id": "",
+          "scorecard": {
+            "breakdowns": [],
+            "dimensions": [],
+            "measures": [],
+            "thresholds": [
+              {
+                "color": "RED",
+                "direction": "BELOW",
+                "label": "",
+                "targetAxis": "TARGET_AXIS_UNSPECIFIED",
+                "value": 6
+              }
+            ],
+            "timeSeriesQuery": {
+              "outputFullDuration": false,
+              "timeSeriesFilter": {
+                "aggregation": {
+                  "alignmentPeriod": "900s",
+                  "crossSeriesReducer": "REDUCE_SUM",
+                  "groupByFields": [
+                    "metric.label.\"observed_node_address\""
+                  ],
+                  "perSeriesAligner": "ALIGN_MEAN"
+                },
+                "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"observed_node_actual_status\"=\"Up\""
+              },
+              "unitOverride": ""
+            }
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "cassandra-server-01 (us-central1-a)",
+          "id": "",
+          "timeSeriesTable": {
+            "columnSettings": [
+              {
+                "displayName": "NODES",
+                "alignment": "LEFT",
+                "column": "observed_node_address",
+                "visible": true
+              },
+              {
+                "displayName": "RACK",
+                "column": "observed_node_rack",
+                "visible": true
+              },
+              {
+                "displayName": "DC",
+                "column": "observed_node_datacenter",
+                "visible": true
+              },
+              {
+                "column": "Name (from instance_id)",
+                "visible": false
+              },
+              {
+                "column": "instance_id",
+                "visible": false
+              },
+              {
+                "column": "project_id",
+                "visible": false
+              },
+              {
+                "displayName": "HOST Zone",
+                "column": "zone",
+                "visible": false
+              },
+              {
+                "displayName": "STATE",
+                "column": "observed_node_actual_state",
+                "visible": true
+              },
+              {
+                "displayName": "STATUS",
+                "column": "observed_node_actual_status",
+                "visible": true
+              },
+              {
+                "displayName": "HOST",
+                "column": "reporter_cassandra_node_ip",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": false
+              }
+            ],
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "900s",
+                "tableTemplate": "",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "groupByFields": [],
+                      "perSeriesAligner": "ALIGN_MAX"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "displayColumnType": false,
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "pageSize": "0",
+              "showFilterBar": false
+            }
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "nodetool ring",
+          "id": "",
+          "singleViewGroup": {
+            "displayType": "DROPDOWN"
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "cassandra-server-02 (us-central1-b)",
+          "id": "",
+          "timeSeriesTable": {
+            "columnSettings": [
+              {
+                "displayName": "NODES",
+                "alignment": "LEFT",
+                "column": "observed_node_address",
+                "visible": true
+              },
+              {
+                "displayName": "RACK",
+                "column": "observed_node_rack",
+                "visible": true
+              },
+              {
+                "displayName": "DC",
+                "column": "observed_node_datacenter",
+                "visible": true
+              },
+              {
+                "column": "Name (from instance_id)",
+                "visible": false
+              },
+              {
+                "column": "instance_id",
+                "visible": false
+              },
+              {
+                "column": "project_id",
+                "visible": false
+              },
+              {
+                "column": "zone",
+                "visible": false
+              },
+              {
+                "displayName": "STATE",
+                "column": "observed_node_actual_state",
+                "visible": true
+              },
+              {
+                "displayName": "STATUS",
+                "column": "observed_node_actual_status",
+                "visible": true
+              },
+              {
+                "displayName": "HOST",
+                "column": "reporter_cassandra_node_ip",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": false
+              }
+            ],
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "900s",
+                "tableTemplate": "",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "groupByFields": [],
+                      "perSeriesAligner": "ALIGN_MAX"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "displayColumnType": false,
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "pageSize": "0",
+              "showFilterBar": false
+            }
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "cassandra-server-03 (us-central1-c)",
+          "id": "",
+          "timeSeriesTable": {
+            "columnSettings": [
+              {
+                "displayName": "NODES",
+                "alignment": "LEFT",
+                "column": "observed_node_address",
+                "visible": true
+              },
+              {
+                "displayName": "RACK",
+                "column": "observed_node_rack",
+                "visible": true
+              },
+              {
+                "displayName": "DC",
+                "column": "observed_node_datacenter",
+                "visible": true
+              },
+              {
+                "column": "Name (from instance_id)",
+                "visible": false
+              },
+              {
+                "column": "instance_id",
+                "visible": false
+              },
+              {
+                "column": "project_id",
+                "visible": false
+              },
+              {
+                "column": "zone",
+                "visible": false
+              },
+              {
+                "displayName": "STATE",
+                "column": "observed_node_actual_state",
+                "visible": true
+              },
+              {
+                "displayName": "STATUS",
+                "column": "observed_node_actual_status",
+                "visible": true
+              },
+              {
+                "displayName": "HOST",
+                "column": "reporter_cassandra_node_ip",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": false
+              }
+            ],
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "900s",
+                "tableTemplate": "",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "groupByFields": [],
+                      "perSeriesAligner": "ALIGN_MAX"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "displayColumnType": false,
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "pageSize": "0",
+              "showFilterBar": false
+            }
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "cassandra-server-04 (us-west1-a)",
+          "id": "",
+          "timeSeriesTable": {
+            "columnSettings": [
+              {
+                "displayName": "NODES",
+                "alignment": "LEFT",
+                "column": "observed_node_address",
+                "visible": true
+              },
+              {
+                "displayName": "RACK",
+                "column": "observed_node_rack",
+                "visible": true
+              },
+              {
+                "displayName": "DC",
+                "column": "observed_node_datacenter",
+                "visible": true
+              },
+              {
+                "column": "Name (from instance_id)",
+                "visible": false
+              },
+              {
+                "column": "instance_id",
+                "visible": false
+              },
+              {
+                "column": "project_id",
+                "visible": false
+              },
+              {
+                "column": "zone",
+                "visible": false
+              },
+              {
+                "displayName": "STATE",
+                "column": "observed_node_actual_state",
+                "visible": true
+              },
+              {
+                "displayName": "STATUS",
+                "column": "observed_node_actual_status",
+                "visible": true
+              },
+              {
+                "displayName": "HOST",
+                "column": "reporter_cassandra_node_ip",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": false
+              }
+            ],
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "900s",
+                "tableTemplate": "",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "groupByFields": [],
+                      "perSeriesAligner": "ALIGN_MAX"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "displayColumnType": false,
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "pageSize": "0",
+              "showFilterBar": false
+            }
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "cassandra-server-05 (us-west1-b)",
+          "id": "",
+          "timeSeriesTable": {
+            "columnSettings": [
+              {
+                "displayName": "NODES",
+                "alignment": "LEFT",
+                "column": "observed_node_address",
+                "visible": true
+              },
+              {
+                "displayName": "RACK",
+                "column": "observed_node_rack",
+                "visible": true
+              },
+              {
+                "displayName": "DC",
+                "column": "observed_node_datacenter",
+                "visible": true
+              },
+              {
+                "column": "Name (from instance_id)",
+                "visible": false
+              },
+              {
+                "column": "instance_id",
+                "visible": false
+              },
+              {
+                "column": "project_id",
+                "visible": false
+              },
+              {
+                "column": "zone",
+                "visible": false
+              },
+              {
+                "displayName": "STATE",
+                "column": "observed_node_actual_state",
+                "visible": true
+              },
+              {
+                "displayName": "STATUS",
+                "column": "observed_node_actual_status",
+                "visible": true
+              },
+              {
+                "displayName": "HOST",
+                "column": "reporter_cassandra_node_ip",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": false
+              }
+            ],
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "900s",
+                "tableTemplate": "",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "groupByFields": [],
+                      "perSeriesAligner": "ALIGN_MAX"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "displayColumnType": false,
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "pageSize": "0",
+              "showFilterBar": false
+            }
+          }
+        }
+      },
+      {
+        "yPos": 8,
+        "height": 19,
+        "width": 48,
+        "widget": {
+          "title": "cassandra-server-06 (us-west1-c)",
+          "id": "",
+          "timeSeriesTable": {
+            "columnSettings": [
+              {
+                "displayName": "NODES",
+                "alignment": "LEFT",
+                "column": "observed_node_address",
+                "visible": true
+              },
+              {
+                "displayName": "RACK",
+                "column": "observed_node_rack",
+                "visible": true
+              },
+              {
+                "displayName": "DC",
+                "column": "observed_node_datacenter",
+                "visible": true
+              },
+              {
+                "column": "Name (from instance_id)",
+                "visible": false
+              },
+              {
+                "column": "instance_id",
+                "visible": false
+              },
+              {
+                "column": "project_id",
+                "visible": false
+              },
+              {
+                "column": "zone",
+                "visible": false
+              },
+              {
+                "displayName": "STATE",
+                "column": "observed_node_actual_state",
+                "visible": true
+              },
+              {
+                "displayName": "STATUS",
+                "column": "observed_node_actual_status",
+                "visible": true
+              },
+              {
+                "displayName": "HOST",
+                "column": "reporter_cassandra_node_ip",
+                "visible": true
+              },
+              {
+                "column": "value",
+                "visible": false
+              }
+            ],
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "900s",
+                "tableTemplate": "",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "groupByFields": [],
+                      "perSeriesAligner": "ALIGN_MAX"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/health_status\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "displayColumnType": false,
+            "metricVisualization": "NUMBER",
+            "opsAnalyticsSettings": {
+              "maxRows": "0",
+              "pageSize": "0",
+              "showFilterBar": false
+            }
+          }
+        }
+      },
+      {
+        "yPos": 27,
+        "height": 17,
+        "width": 23,
+        "widget": {
+          "title": "Total Load Percentage",
+          "id": "",
+          "xyChart": {
+            "chartOptions": {
+              "displayHorizontal": false,
+              "mode": "COLOR",
+              "showLegend": false
+            },
+            "dataSets": [
+              {
+                "breakdowns": [],
+                "dimensions": [],
+                "legendTemplate": "",
+                "measures": [],
+                "minAlignmentPeriod": "900s",
+                "plotType": "LINE",
+                "targetAxis": "Y1",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "crossSeriesReducer": "REDUCE_MEAN",
+                      "groupByFields": [
+                        "metric.label.\"observed_node_address\""
+                      ],
+                      "perSeriesAligner": "ALIGN_MEAN"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/load_percentage_of_total\" resource.type=\"gce_instance\" metric.label.\"reporter_cassandra_node_ip\"=\"<IP here>\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            }
+          }
+        }
+      },
+      {
+        "yPos": 27,
+        "xPos": 23,
+        "height": 17,
+        "width": 25,
+        "widget": {
+          "title": "Effective Ownership Load",
+          "id": "",
+          "xyChart": {
+            "chartOptions": {
+              "displayHorizontal": false,
+              "mode": "COLOR",
+              "showLegend": false
+            },
+            "dataSets": [
+              {
+                "breakdowns": [],
+                "dimensions": [],
+                "legendTemplate": "",
+                "measures": [],
+                "minAlignmentPeriod": "900s",
+                "plotType": "LINE",
+                "targetAxis": "Y1",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "crossSeriesReducer": "REDUCE_MEAN",
+                      "groupByFields": [
+                        "metric.label.\"reporter_cassandra_node_ip\""
+                      ],
+                      "perSeriesAligner": "ALIGN_MEAN"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/effective_ownership\" resource.type=\"gce_instance\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            }
+          }
+        }
+      },
+      {
+        "yPos": 44,
+        "height": 13,
+        "width": 23,
+        "widget": {
+          "title": "Load Bytes",
+          "id": "",
+          "xyChart": {
+            "chartOptions": {
+              "displayHorizontal": false,
+              "mode": "COLOR",
+              "showLegend": false
+            },
+            "dataSets": [
+              {
+                "breakdowns": [],
+                "dimensions": [],
+                "legendTemplate": "",
+                "measures": [],
+                "minAlignmentPeriod": "900s",
+                "plotType": "LINE",
+                "targetAxis": "Y1",
+                "timeSeriesQuery": {
+                  "outputFullDuration": false,
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "900s",
+                      "crossSeriesReducer": "REDUCE_SUM",
+                      "groupByFields": [
+                        "metric.label.\"observed_node_address\""
+                      ],
+                      "perSeriesAligner": "ALIGN_MEAN"
+                    },
+                    "filter": "metric.type=\"custom.googleapis.com/cassandra/node/load_bytes\" resource.type=\"gce_instance\""
+                  },
+                  "unitOverride": ""
+                }
+              }
+            ],
+            "thresholds": [],
+            "yAxis": {
+              "label": "",
+              "scale": "LINEAR"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
