@@ -1,0 +1,48 @@
+# config.yaml
+
+project_id: "<your_gcp_project_id_here"
+
+# Common settings for all Cassandra nodes
+common_cassandra_settings:
+  ssh_user: "<your_ssh_user_here"       # User to SSH as, this user runs nodetool
+  nodetool_path: "<path_on_server_to_dir_nodetool>" # Full path to nodetool
+
+# SSH and command execution timeouts
+timeouts:
+  ssh_connect_timeout_sec: 30
+  command_timeout_sec: 90
+
+# List of Cassandra GCE VM instances (instance-specific details)
+cassandra_instances:
+  - instance_name: "cassandra-server-01"
+    instance_id: "<gce_vm_instance_id_here>" # GCE Instance ID
+    ip: "<gce_vm_ip_address_here>" # Internal IP
+    zone: "<gce_vm_region_zone_here>" # Example us-central1-a
+  - instance_name: "cassandra-server-02"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
+  - instance_name: "cassandra-server-01"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
+  - instance_name: "cassandra-server-02"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
+  - instance_name: "cassandra-server-03"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
+  - instance_name: "cassandra-server-04"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
+  - instance_name: "cassandra-server-05"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
+  - instance_name: "cassandra-server-06"
+    instance_id: "<gce_vm_instance_id_here>"
+    ip: "<gce_vm_ip_address_here>"
+    zone: "<gce_vm_region_zone_here>"
